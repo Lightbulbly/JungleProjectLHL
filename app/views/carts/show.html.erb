@@ -3,8 +3,16 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+  <% if cart.size==0  %>
+  <div>Your cart is empty.Take a look at our 
+  <a href="/" >products</a>
+  </div>
+  <% end %>
+
+  <% if cart.size!=0  %>
 
   <div class="panel panel-default items">
+
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -15,8 +23,8 @@
         </tr>
       </thead>
       <tbody>
-        <% enhanced_cart.each do |item| %>
-          <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
+      <% enhanced_cart.each do |item| %>
+        <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
       </tbody>
       <tfoot>
@@ -25,8 +33,9 @@
             TOTAL:
           </th>
           <th>
-            <%= cart_subtotal_cents / 100.0 %>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
           </th>
+
         </tr>
       </tfoot>
     </table>
@@ -46,6 +55,8 @@
           data-currency="cad">
         </script>
       <% end %>
+      <% end %>
+
     </div>
   </div>
 
