@@ -1,13 +1,22 @@
 <tr>
-<th><%= sale.name %>
+<td><%= sale.name %>
 </th>
-<th><%= sale.starts_on %>
+<td><%= sale.starts_on %>
 </th>
-<th><%= sale.ends_on %>
+<td><%= sale.ends_on %>
 </th>
-<th>STATUS
-</th>
-<th><%= sale.percent_off %>
-</th>
+<td>STATUS
+
+<% if sale.finished? %>
+    <span class="label label-danger">Finished</span>
+    <% elsif sale.upcoming? %>
+    <span class="label label-warning">Upcoming</span>
+    <% else %>
+    <span class="label label-success">Active</span>
+    <% end %>
+
+</td>
+<td><%= sale.percent_off %>
+</td>
 
 </tr>
