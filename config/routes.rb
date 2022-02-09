@@ -2,12 +2,6 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
-get '/login' => 'sessions#new'
-post '/login' => 'sessions#create'
-get '/logout' => 'sessions#destroy'
-get '/signup' => 'users#new'
-post '/users' => 'users#create'
-
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
@@ -21,7 +15,7 @@ post '/users' => 'users#create'
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
-    resources :categories, only: [:new, :create, :show, :index]
+    resources :categories, only: [:new, :create, :index]
     resources :sales, only: [:index, :new]
 
   end
@@ -106,4 +100,9 @@ post '/users' => 'users#create'
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create'
+get '/logout' => 'sessions#destroy'
+get '/signup' => 'users#new'
+post '/users' => 'users#create'
 end

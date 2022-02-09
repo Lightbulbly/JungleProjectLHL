@@ -16,7 +16,13 @@
   There is an active <%= "Back to school" %> sale going on! <strong>Everything is <%= 15 %> off!</strong>
   </p>
   <% end %>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
     <%= yield %>
+   
   </main>
 
   <%= yield :end_of_body %>
