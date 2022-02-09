@@ -21,9 +21,7 @@ end
     # ACT
     visit root_path
     # DEBUG / VERIFY
-    
-     # commented out b/c it's for debugging only
-     save_screenshot('products_page.png')
+    save_screenshot('products_page.png')
     expect(page).to have_css 'article.product', count: 10
 
    
